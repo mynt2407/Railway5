@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Type</title>
+</head>
+
+<body>
+    <script>
+        // Question1: Khoi tao department
+        function Department(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        var department1 = new Department(1, "My Nguyen");
+        var department2 = new Department(2, "Duy Nguyen");
+        var department3 = new Department(3, "Love");
+
+        console.log(department1.name);
+        console.log(department2.name);
+        console.log(department3.name);
+        document.write(department3.name);
+
+        // Question1: Khoi tao account
+        function Account(id, email, userName, fullName, departmentId, positionId, createDate) {
+            this.id = id;
+            this.email = email;
+            this.userName = userName;
+            this.fullName = fullName;
+            this.departmentId = departmentId;
+            this.positionId = positionId;
+            this.createDate = createDate;
+        }
+
+        var account1 = new Account(1, "my1@gmail.com", "myNguyen", "Nguyen Thi My1", "3", "7", "2020-11-09");
+        var account2 = new Account(2, "my12@gmail.com", "myNguyenThi", "Nguyen Thi My2");
+        var account3 = new Account(3, "my123@gmail.com", "myNguyenabc", "Nguyen Thi My3", "2", "30", "2019-01-19");
+        var account4 = new Account(4, "my1234@gmail.com", "myNguyenxyz", "Nguyen Thi My4", "6", "2015-05-11");
+        console.log(account1.positionId);
+        console.log(account2.departmentId);
+        console.log(account2.positionId);
+        
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+.person{
+display: inline-block;
+margin:  10px;
+border: solid 1px wheat;
+/* Đổ bóng */
+box-shadow: 0 2px 2px pink;
+padding: 20px;
+}

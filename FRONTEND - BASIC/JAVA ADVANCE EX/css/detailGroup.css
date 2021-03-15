@@ -1,0 +1,20 @@
+.detailGroups{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid black;
+    height: 400px;  
+}
+
+.titleDetail{
+    flex-grow:  1;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.detail {
+    flex-grow:  12;
+    border: 1px solid black;
+    
+}

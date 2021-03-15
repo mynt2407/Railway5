@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Control</title>
+</head>
+
+<body>
+    <p id="demo"></p>;
+    <script>
+
+        // Khoi tao department
+        function Department(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        var department1 = new Department(1, "Phong 1");
+        var department2 = new Department(2, "Phong 2");
+        var department3 = new Department(3, "Phong 3");
+
+        //Khoi tao position
+        function Position(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+        var position1 = new Position(1, "DEV");
+        var position2 = new Position(2, "SCRUM MASTER");
+        var position3 = new Position(3, "TEST");
+
+        // Khoi tao account
+        function Account(id, email, userName, fullName, department, positionId, createDate) {
+            this.id = id;
+            this.email = email;
+            this.userName = userName;
+            this.fullName = fullName;
+            this.department = department;
+            this.positionId = positionId;
+            this.createDate = createDate;
+        }
+
+        var account1 = new Account(1, "my1@gmail.com", "myNguyen", "Nguyen Thi My1", department2, "7", "2020-11-09");
+        var account2 = new Account(2, "my12@gmail.com", "myNguyenThi", "Nguyen Thi My2");
+        var account3 = new Account(3, "my123@gmail.com", "myNguyenabc", "Nguyen Thi My3", department3, "30", "2019-01-19");
+        var account4 = new Account(4, "my1234@gmail.com", "myNguyenxyz", "Nguyen Thi My4", "6", "2015-05-11");
+
+        // Khoi tao group 
+        function Group(id, name, createId, createDate) {
+            this.id = id;
+            this.name = name;
+            this.createId = createId;
+            this.createDate = createDate;
+        }
+
+        var group1 = new Group(1, "JAVA Script", 2, "2020-09-12");
+        var group2 = new Group(2, "C#", 3, "2019-07-20");
+        var group3 = new Group(3, "JAVA Core", 1, "2017-10-02");
+
+        //Khoi tao Group Account
+        function GroupAccount(groups, accounts, JoinDate) {
+            this.groups = groups;
+            this.accounts = accounts;
+            this.JoinDate = JoinDate;
+        }
+
+        var groupAccount1 = new GroupAccount(group1, account2, "2020-11-01");
+        var groupAccount2 = new GroupAccount(group3, account2, "2020-11-01");
+        var groupAccount3 = new GroupAccount(group3, account1, "2020-11-01");
+        var groupAccount4 = new GroupAccount(group2, account3, "2020-11-01");
+
+        // Xét xem account thuộc những group nào 
+        var groupOfAccount1 = [groupAccount3];
+        account1.groups = groupOfAccount1;
+
+        var groupOfAccount2 = [groupAccount1, groupAccount2];
+        account2.groups = groupOfAccount2;
+
+        var groupOfAccount3 = [groupAccount4];
+        account3.groups = groupOfAccount3;
+
+        //Xét xem group có những account nào 
+        var AccountsInGroup1 = [groupAccount1];
+        group1.accounts = AccountsInGroup1;
+
+        var AccountsInGroup2 = [groupAccount4];
+        group2.accounts = AccountsInGroup2;
+
+        var AccountsInGroup3 = [groupAccount2, groupAccount3];
+        group3.accounts = AccountsInGroup3;
+
+        //Question 1: Exercise 1
+        console.log(account1.positionId);
+        console.log(account2.positionId);
+
+        console.log(department1.name);
+        console.log(department2.name);
+        console.log(department3.name);
+        document.write(department3.name);
+
+        // Question 1: Exercise 2
+        console.log(account2.department == null ? "Account nay chua co phong ban" : "Account da co phong ban");
+        // Question 2: Exercise 2
+        if (groupOfAccount1.length == null) {
+            console.log("account nay chua co chuc vu cu the");
+        } else if (groupOfAccount1.length == 1 || groupOfAccount1.length == 2) {
+            console.log("Group của nhân viên này là Java Fresher, C# Fresher");
+        } else if (agroupOfAccount1.length == 3) {
+            console.log("Nhân viên này là người quan trọng, tham gia nhiều group")
+        } else {
+            console.log("Nhân viên này là người hóng chuyện, tham gia tất cả các group");
+        }
+
+        // Question 5: Switch case (Lấy ra số lượng account trong nhóm thứ 1)
+        switch (AccountsInGroup3.length) {
+            case 0:
+                console.log("Nhom nay khong co account nao");
+                break;
+            case 1:
+                console.log("Nhóm có một thành viên");
+                break;
+            case 2:
+                console.log("Nhóm có hai thành viên");
+                break;
+            case 3:
+                console.log("Nhóm có ba thành viên");
+                break;
+
+            default:
+                console.log("Nhóm có nhiều thành viên");
+                break;
+        }
+        console.log("\n");
+
+        // FOREACH Question 8: in ra thông tin các account bao gồm: Email, FullName và tên phòng ban của họ
+        var accounts = [account1, account2, account3, account4];
+        accounts.forEach(account => {
+            console.log(account.fullName);
+            console.log(account.email);
+
+            if (account.department == null) {
+                console.log("Account nay khong thuoc phong ban nao");
+            } else {
+                console.log(account.department.name);
+            }
+            console.log("\n");
+        });
+       
+        //Question 9:  in ra thông tin các phòng ban bao gồm: id và name
+        var departments = [department1, department2, department3];
+        departments.forEach(element => {
+            console.log(element.id);
+            console.log(element.name);
+        });
+        //Question 10: in ra thông tin các account bao gồm: Email, FullName và tên phong ban
+        for (let index = 0; index < accounts.length; index++) {
+            const element = accounts[index];
+            console.log("Thong tin cua account thu " + (index + 1) + " la:")
+            console.log("Email: " + element.email);
+            console.log("Full name: " + element.fullName);
+
+            if (element.department == null) {
+                console.log("Account nay khong thuoc phong ban nao");
+            } else {
+                console.log("Phong ban: " + element.department.name);
+            }
+            console.log("\n");
+        }
+        //Question 13: in ra thông tin tất cả các account ngoại trừ account thứ 2
+        console.log("Nhung account khong phai accont thu 2 la:")
+
+        for (let index = 0; index < accounts.length; index++) {
+            const element = accounts[index];
+            if (index != 1) {
+                console.log("Thong tin cua account thu " + (index + 1) + " la:")
+                console.log("Email: " + element.email);
+                console.log("Full name: " + element.fullName);
+                console.log("\n");
+            }
+        }
+
+        //Question 15: in ra các số chẵn nhỏ hơn hoặc bằng 20
+        for (let a = 0; a <= 20; a++) {
+            if (a % 2 == 0) {
+                console.log(a);
+            }
+        }
+        console.log("\n");
+
+        //Question 16: in ra các số le nhỏ hơn hoặc bằng 20 va khac 3 va 5 (Dung While)
+        var a = 0;
+        while (a <= 20) {
+            if (a == 3 || a == 5) {
+                a++;
+                continue;
+            } else if (a % 2 != 0) {
+                console.log(a);
+            }
+            a++;
+        }
+
+    </script>
+</body>
+
+</html>

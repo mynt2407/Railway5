@@ -1,0 +1,14 @@
+.clock1 {
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    left: 0;
+    top: 0;
+    border: solid 2px rgb(0, 128, 0);
+    background-color: wheat;
+}

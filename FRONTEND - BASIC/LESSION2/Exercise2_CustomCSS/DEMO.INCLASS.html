@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            float: left;
+            width: 100px;
+            height: 50px;
+            border: 1px solid green;
+        }
+        .div2{
+            border: 1px solid red;
+            /* clear: left; */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="div1">div1</div>
+    <div class="div2">abc</div>
+
+    <p id="demo">My Nguyen</p>
+
+    <button type="button" onclick="changeContent()">
+        Change Content
+    </button>
+
+    //JavaScript
+    <script>
+        function Person(name, age, school) {
+            this.name = name;
+            this.age = age;
+            this.school = school;
+        }
+        var my1 = new Person("My Nguyen", 20, "Đại học");
+        var my2 = new Person("My123", 22, "ABC");
+
+        console.log(my1.age);
+
+        function changeContent() {
+            document.getElementById("demo").innerHTML = "My Nguyen 123";
+        }
+
+        var obj = {
+            counter: 0,
+            get reset() {
+                this.counter = 0;
+            },
+            get increment() {
+                this.counter++;
+            },
+            get decrement() {
+                this.counter--;
+            },
+            set add(value) {
+                this.counter += value;
+            },
+            set subtract(value) {
+                this.counter -= value;
+            }
+        };
+        obj.reset;
+        obj.add = 10;
+        obj.increment;
+
+        console.log(obj.counter);
+    </script>
+   
+</body>
+
+</html>

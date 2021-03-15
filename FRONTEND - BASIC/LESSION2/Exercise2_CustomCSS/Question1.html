@@ -1,0 +1,284 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Basic degisn</title>
+    <style>
+        .div1 {
+            margin: 20px 100px 20px 100px;
+            background-color: pink;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .div2 {
+            margin: 20px 100px 20px 100px;
+            background-color: rgba(255, 217, 0, 0.911);
+            text-align: center;
+        }
+
+        .div3 {
+            margin: 20px 100px 20px 100px;
+        }
+
+        .div4 {
+            margin: 20px 100px 20px 100px;
+            background-color: gray;
+        }
+
+        .div5 {
+            margin: 20px 200px 20px 200px;
+
+        }
+
+        .div6 {
+            margin: 100px 200px 20px 200px;
+            display: block;
+
+        }
+
+        img {
+            float: left;
+            width: 150px;
+            height: 180px;
+            margin-right: 80px;
+            margin-left: 140px;
+
+        }
+
+
+        .menu {
+            margin: 100px 200px 20px 200px;
+            width: 50%;
+            background-color: #d98c8c;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .tinhoc {
+            margin: 20px 350px 20px 350px;
+            border: 1px solid violet;
+        }
+
+
+        tr:nth-child(even) {
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- text align: căn chinh văn bản -->
+    <!-- text indent: thụt lề văn bản -->
+    <!-- text transport: chỉnh kiểu viết hoa, viết thường -->
+    <h1 style="text-align: center">Bài 1: Sử dụng các tag cơ bản</h1>
+    <h2 style="text-indent: 100px;"><u>Yêu cầu</u></h3>
+        <h4 style="text-indent: 100px;">Thiết kế web có nội dung như sau:</h4>
+        <p style="text-align: center">Lập trình Web</p>
+        <p style="text-align: center">Chào mừng bạn đến với ngôn ngữ HTML</p>
+
+        <h1 style="text-align: center;
+            color: green;">Bài 2: Sử dụng các tag cơ bản tiếp theo</h1>
+        <h3 style="text-indent: 100px;
+            color: blue;"><u>Yêu cầu</u></h3>
+        <h4 style="text-indent: 100px;">Thiết kế web có nội dung như sau:</h4>
+
+        <div class="div1">
+            <p>mẹ!</p>
+        </div>
+
+        <div class="div2">
+            <p style="color: blue;">Mẹ là cả một trời thương</p>
+            <p style="color: blue;">Mẹ là cả một thiên đường trần gian</p>
+            <p style="color: blue;">Công ơn cha mẹ tựa trời biển</p>
+            <p style="color: blue;">______________________________________</p>
+            <p style="color: red;">Làm sao báo hiếu hỡi người ơi?</p>
+            <p style="color: red;">Nếu chưa báo hiếu đừng bất hiếu</p>
+            <p style="color: red;">Bất hiếu làm ta khổ muôn đời</p>
+            <p style="color: blue;">______________________________________</p>
+            <p style="color: green;">Một đời vốn liếng mẹ trao</p>
+            <p style="color: green;">mẹ cho tất cả mẹ nào giữ riêng</p>
+            <p style="color: green;">Mẹ hiền như một bà tiên</p>
+            <p style="color: green;">Mẹ theo con suốt hành trình con đi</p>
+            <p style="color: blue;">______________________________________</p>
+        </div>
+
+        <h1 style="text-align: center;
+            color: green;">Định dạng văn bản</h1>
+        <div class="div3">
+            <span><b><u>Hóa học:</u></b></span> <span><i>Nước:</i></span>
+            <span style="color: red;">H<sub>2</sub>0;</span> <span><i>Axit Sulfuric</i></span>
+            <span style="color: red;">H<sub>2</sub>S0<sub>4</sub>
+            </span>
+        </div>
+
+        <div class="div3">
+            <span><b><u>Toán học:</u></b></span> <span><i>Phương trình bậc 2:</i></span>
+            <span style="color: red;">ax <sup>2</sup> + bx + c = 0</span>
+        </div>
+        <div class="div3">
+            <span><b><u>Hóa học:</u></b></span> <span><i>Vòng lặp for:</i></span>
+        </div>
+        <div class="div4">
+            <p style="text-indent: 300px;">For i = 0 to 10</p>
+            <p style="text-indent: 600px;">Tổng = tổng + 1</p>
+            <p style="text-indent: 300px;">next</p>
+        </div>
+
+        <div class="div5">
+            <h2 style="text-align: center; color:#ff1a75;">Công ty hoa tươi Nhân Ái</h2>
+
+            <p><img src="C:\Users\MyNguyen\Desktop\Image\hoahong.png" alt="Hoa hồng">
+            <ol type="1">
+                <li>Giới thiệu</li>
+                <ul style="list-style-type: circle;">
+                    <li>Thành lập ngày 25/05/2007</li>
+                    <li>Chuyên cung cấp các loại hoa tươi</li>
+                    <li>Có trên 20 cửa hàng bán lẻ tại TPHCM</li>
+                    <li>Nhận kết giỏ hoa theo yêu cầu của khách hàng</li>
+                </ul>
+                <br>
+                <li>Liên hệ:</li>
+                <ul style="list-style-type: circle;">
+                    <li>Điện thoại: 987654321</li>
+                    <li>Địa chỉ: 227 Nguyễn Văn Cừ</li>
+                </ul>
+            </ol>
+            </p>
+        </div>
+
+        <div class="menu">
+            <h2 style="text-align: center; color: saddlebrown;">Các món ngon Hà Nội</h2>
+            <p><img src="C:\Users\MyNguyen\Desktop\Image\food.png" alt="Food">
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên món ăn</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Bánh cuốn Thanh Trì</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Xôi Hà Nội</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Chả cá Lá Vọng</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Cháo Ốc</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Bánh Gai Ninh Gianh</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Bún thang Hà Nội</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Canh Lắng</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Vịt quay Lạng Sơn</td>
+                </tr>
+            </table>
+
+            </p>
+        </div>
+
+
+        <h2 style="text-align: center; color: red;">Chương trình học- Ngành lập trình</h2>
+        <table class="tinhoc">
+            <tr>
+                <th rowspan="2" style="background-color: red; color: white;">Nhóm học phần</th>
+                <th rowspan="2" style="background-color: red; color: white;">Môn học</th>
+                <th colspan="2" style="background-color: red; color: white;">Số tiết</th>
+            </tr>
+
+            <tr>
+                <th style="background-color: red; color: white;">Lý thuyết</th>
+                <th style="background-color: red; color: white;">Thực hành</th>
+            </tr>
+
+            <tr>
+                <td rowspan="6">
+                    <div style="text-align: center;">I</div>
+                    <div style="text-align: center;">Tin học văn phòng</div>
+                </td>
+                <td>Hệ điều hàng Windowns</td>
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">5</td>
+            </tr>
+
+            <tr>
+                <td>Sử dụng internet</td>
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">5</td>
+            </tr>
+            <tr>
+                <td>Soạn thảo văn bản với MS Word</td>
+                <td style="text-align: center;">24</td>
+                <td style="text-align: center;">40</td>
+            </tr>
+            <tr>
+                <td>Tạo bản trình chiếu với MS powerpoint</td>
+                <td style="text-align: center;">9</td>
+                <td style="text-align: center;">15</td>
+            </tr>
+            <tr>
+                <td>Xử lý số liệu với MS excel</td>
+                <td style="text-align: center;">24</td>
+                <td style="text-align: center;">40</td>
+            </tr>
+
+            <tr>
+                <td>Tạo trang web với MS frontpage</td>
+                <td style="text-align: center;">9</td>
+                <td style="text-align: center;">15</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2">
+                    <div style="text-align: center;">II</div>
+                    <div style="text-align: center;">Kỹ thuật lập trình VB(.NET)</div>
+                </td>
+                <td>Nhập môn lập trình</td>
+                <td style="text-align: center;">36</td>
+                <td style="text-align: center;">60</td>
+            </tr>
+
+            <tr>
+                <td>Kỹ thuật lập trình</td>
+                <td style="text-align: center;">36</td>
+                <td style="text-align: center;">60</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">...............</td>
+            </tr>
+        </table>
+
+</body>
+
+</html>

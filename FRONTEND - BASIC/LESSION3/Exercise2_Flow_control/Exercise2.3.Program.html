@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Odd or Even</title>
+</head>
+
+<body>
+    <p>Try to check your number is odd or even</p>
+    <button onclick="myFunction()">Click here</button>
+    <br>
+
+    <p>Mời bạn nhập vào điểm của mình để kiểm tra học lực</p>
+    <button onclick="myFunction1()">Check</button>
+    <br>
+
+    <p>Mời bạn nhập vào quãng đường đi</p>
+    <button onclick="myFunction2()">Check time</button>
+
+    <p id="demo"></p>
+
+    <script>
+        //Question 1: check số chẵn, số lẻ
+        function myFunction() {
+            var number = prompt("Please input your number to check!");
+            if (number == "") {
+                document.getElementById("demo").innerHTML = "You must input at least on number! Try again!";
+            } else if (number % 2 == 0) {
+                document.getElementById("demo").innerHTML = "Number " + number + " is even";
+            } else if (number % 2 != 0) {
+                document.getElementById("demo").innerHTML = "Number " + number + " is odd";
+            }
+        }
+        // Question 2: check học lực học sinh
+        function myFunction1() {
+            var number = prompt("Mời bạn nhập vào điểm!");
+            if (number == "") {
+                document.getElementById("demo").innerHTML = "Bạn phải nhập vào số điểm của mình! Mời thử lại!";
+            } else if (number < 5) {
+                document.getElementById("demo").innerHTML = "Bạn là học sinh Yếu";
+            } else if (number <= 6) {
+                document.getElementById("demo").innerHTML = "Bạn là học sinh TB";
+            } else if (number <= 8) {
+                document.getElementById("demo").innerHTML = "Bạn là học sinh Khá";
+            } else if (number <= 10) {
+                document.getElementById("demo").innerHTML = "Bạn là học sinh Giỏi";
+            }
+            else {
+                document.getElementById("demo").innerHTML = "Điểm của bạn phải nhỏ hơn 10";
+            }
+        }
+        // Question 3: tính thời gian đi của người đi bộ
+        function myFunction2() {
+            var long = prompt("Mời bạn nhập vào quãng đường đi!");
+            var t;
+            console.log(t);
+            if (long == "") {
+                document.getElementById("demo").innerHTML = "Bạn phải nhập vào quãng đường của mình! Mời thử lại!";
+            } else if (long < 3000) {
+                t = long * 1;
+                document.getElementById("demo").innerHTML = "Thời gian dự kiến đi hết quãng đường trên là: " + t + " giây";
+            } else if (long < 5000) {
+                t = 3000 * 1 + 2 * (long - 3000);
+                document.getElementById("demo").innerHTML = "Thời gian dự kiến đi hết quãng đường trên là: " + t + " giây";
+            } else if (long < 6000) {
+                t = 3000 * 1 + 2 * 2000 + 3* (long - 5000);
+                document.getElementById("demo").innerHTML = "Thời gian dự kiến đi hết quãng đường trên là: " + t + " giây";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

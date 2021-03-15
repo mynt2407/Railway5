@@ -1,0 +1,16 @@
+
+.article-section {
+    background-color: pink;
+    flex: 3;
+    flex-direction: column;
+    flex-direction: flex-start;
+}
+.item {
+    flex: 1;
+}
+
+.aside {
+    background-color: grey;
+    flex: 1;
+}
+

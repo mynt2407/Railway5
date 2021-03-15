@@ -1,0 +1,40 @@
+
+
+.div1 {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+.header {
+    background-color: red;
+    /* height: 110px; */
+    flex: 3;
+    color: white;
+}
+
+.navi {
+    background-color: green;
+    /* height: 40px; */
+    flex: 1;
+    color: white;
+}
+
+.footer {
+    background-color: orange;
+    /* height: 110px; */
+    flex: 2;
+    color: white;
+}
+
+.container {
+    background-color: blue;
+    /* height: 200px; */
+    flex: 7;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0;
+}

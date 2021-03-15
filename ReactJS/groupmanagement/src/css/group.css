@@ -1,0 +1,9 @@
+.groupContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.searchItem {
+    margin-right: auto;
+}

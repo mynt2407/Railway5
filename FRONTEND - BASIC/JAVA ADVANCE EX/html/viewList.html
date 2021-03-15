@@ -1,0 +1,64 @@
+<div class="container">
+
+    <h5><b>Manager Group </b><span><i class='fas fa-users' style='font-size:15px; color: cornflowerblue;'></i></span></h5>
+    <h4><b>List group</b></h4>
+
+    <div class="formsearch">
+        <span style="margin-right:auto">
+            <form class="example item5" action="/action_page.php" >
+            <input type="text" placeholder="Search.." name="search2" style="height: 30px;">
+            <button type="submit" style="height: 30px;"><i class="fa fa-search"></i></button>
+          </form>
+        </span>
+        <span><i class='fas fa-plus' style='font-size:24px' onclick="openCreateModal()"></i> </span>
+        <span> <i class='fas fa-sync' style='font-size:24px ; padding-left: 30px;'></i> </span>
+        <span> <i class='fas fa-trash-alt' style='font-size:24px ; padding-left: 30px;' onclick="confirmDelete(id)" ></i></span>
+    </div>
+    <br>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->
+
+                <th>
+                    <form style="padding-left: 10px;"><input id="inputTotal" type="checkbox" value="" onclick="checkAll()"> </form>
+                </th>
+                <th><i class="fa fa-sort iconsort" onclick=""></i>STT</th>
+                <th><i class="fa fa-sort iconsort " onclick=""></i>Group Name</th>
+                <th><i class="fa fa-sort iconsort " onclick=""></i>Member</th>
+                <th><i class="fa fa-sort iconsort " onclick=""></i>Creator</th>
+                <th><i class="fa fa-sort iconsort " onclick=""></i>Create Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <!-- form create Group Name -->
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><b style="color: green">Create Group</b></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <label for="name">Group name:</label>
+                    <input type="text" id="name" name="name" value=""><br>
+                    <div id="error_name"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="SaveCreateGroup()">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <h3><b>Manager Group </b><span><i class='fas fa-users' style='font-size:25px; color: cornflowerblue;'></i></span></h3>
+
+    <div class="detailGroups">
+        <h4 class="titleDetail"><b>Group detail</b></h4>
+
+        <div class="detail titleDetail">
+            <span id="groupId" style="display:none"></span>
+            <h3 style="text-align: center;  color: rgb(211, 71, 94); ">
+                <span id="groupName"></span>
+                <i class='fas fa-pencil-alt' style='font-size:25px' onclick="openUpdateModal()"></i>
+            </h3>
+            <h4>Creator: <span id="Creator"></span></h4>
+            <h4>Create date: <span id="CreateDate"></span></h4>
+            <h4>Member: <span id="Member"></span> </h4>
+        </div>
+    </div>
+
+    <!-- form create Group Name -->
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><b style="color: green">Update Group</b></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <span id ="idGroup" style="display: none"></span>
+                    <label for="name">Group name:</label>
+                    <input type="text" id="name" name="name" value=""><br>
+                    <div id="error_name"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="updateNewName()">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>

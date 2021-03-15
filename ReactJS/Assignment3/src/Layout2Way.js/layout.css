@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    flex: 2;
+    background-color: gray;
+}
+
+.body {
+    flex: 3;
+    background-color: rgb(177, 176, 176);
+    display: flex;
+}
+
+.footer {
+    flex: 1;
+    background-color: gray;
+}
