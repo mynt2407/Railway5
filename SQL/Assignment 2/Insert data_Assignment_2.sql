@@ -27,7 +27,7 @@ VALUES
 						(3,			'alka.asura@gmail.com',			'du.lengoc',			N'Lê Ngọc Du',			2,				2,			NOW()),
 						(4,			'ntd19795@gmail.com',			'duc.nguyenthe',		N'Nguyễn Thế Đức',		5,				6,			NOW()),
 						(5,			'Vuhoanghiepnb@gmail.com',		'hiep.vuhoang',			N'Vũ Hoàng Hiệp',		3,				3,			NULL),
-						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỵ',		2,				1,			NULL),
+						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỹ Nhung',2,				1,			NULL),
 						(7,			'nhung.tongthi@vti.com.vn',		'nhung.tongthi',		N'Tống Thị Nhung',		3,				2,			NOW());
                         
 INSERT INTO `Group` (GroupID, 	GroupName, 				CreatorID, CreateDate)
