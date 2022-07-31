@@ -17,7 +17,7 @@ CREATE TABLE Department(
 -- create table 2: Position
 CREATE TABLE Position (
 	PositionID 		TINYINT UNSIGNED PRIMARY KEY,
-	PositionName 	ENUM('Sale', 'Digital marketing', 'Test', 'Vice Director', 'Guard', 'Accountant') UNIQUE KEY NOT NULL
+	PositionName 	ENUM('Sale', 'PM', 'Test', 'Vice Director', 'Scrum Master', 'Accountant', 'HR', 'Dev') UNIQUE KEY NOT NULL
 );
 
 

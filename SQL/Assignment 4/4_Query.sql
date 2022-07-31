@@ -31,19 +31,19 @@ HAVING 		COUNT(A.AccountID) > 2;
 
 SELECT 		Q.QuestionID -- , COUNT(EQ.ExamID), GROUP_CONCAT(EQ.ExamID)
 FROM 		Question Q
-LEFT JOIN	Examquestion EQ ON EQ.QuestionID = Q.QuestionID
-GROUP BY	Q.QuestionID
+JOIN		Examquestion EQ ON EQ.QuestionID = Q.QuestionID
+GROUP BY	EQ.QuestionID
 HAVING 		COUNT(EQ.ExamID) = (SELECT Max(So_Luong_Exam) 
 								FROM  ( SELECT 		COUNT(EQ.ExamID) AS So_Luong_Exam
 										FROM 		Question Q
-										LEFT JOIN	Examquestion EQ ON EQ.QuestionID = Q.QuestionID
-										GROUP BY	Q.QuestionID) AS statistic_Question_Exam);
+										JOIN		Examquestion EQ ON EQ.QuestionID = Q.QuestionID
+										GROUP BY	EQ.QuestionID) AS statistic_Question_Exam);
                                         
  
  -- Question 6: Thống kê mỗi category Question được sử dụng trong bao nhiêu Question
- SELECT 	CategoryName, Q.CategoryID, GROUP_CONCAT(Q.QuestionID) AS CAU_HOI
+ SELECT 	CategoryName, Q.CategoryID, GROUP_CONCAT(Q.QuestionID) AS CAU_HOI, COUNT(Q.CategoryID)
  FROM 		CategoryQuestion C
- JOIN 		Question Q ON C.CategoryID = Q.CategoryID
+ LEFT JOIN 		Question Q ON C.CategoryID = Q.CategoryID
  GROUP BY	Q.CategoryID
  ;
  
@@ -55,8 +55,8 @@ HAVING 		COUNT(EQ.ExamID) = (SELECT Max(So_Luong_Exam)
  ;
  
  -- Question 8: Lấy ra Question có nhiều câu trả lời nhất
- 
- SELECT 	Q.QuestionID, A.AnswerID
+ -- C1
+ SELECT 	Q.QuestionID, A.AnswerID, COUNT(A.AnswerID)
  FROM		Question Q
  LEFT JOIN 	Answer A ON Q.QuestionID = A.QuestionID
  GROUP BY	A.QuestionID
@@ -64,11 +64,20 @@ HAVING 		COUNT(EQ.ExamID) = (SELECT Max(So_Luong_Exam)
 									FROM  	(SELECT COUNT(A.AnswerID) AS CAU_TRA_LOI
 											FROM Question Q
 											LEFT JOIN Answer A ON Q.QuestionID = A.QuestionID
-											GROUP BY A.QuestionID) AS MAX_CAU_TRA_LOI)
- ;
+											GROUP BY A.QuestionID) AS MAX_CAU_TRA_LOI);
  
+ -- C2
+ SELECT 	Q.QuestionID, A.AnswerID, COUNT(A.AnswerID)
+ FROM		Question Q
+ LEFT JOIN 	Answer A ON Q.QuestionID = A.QuestionID
+ GROUP BY	A.QuestionID
+ HAVING 	COUNT(A.AnswerID) = (SELECT MAX(CAU_TRA_LOI) 
+									FROM  	(SELECT COUNT(AnswerID) AS CAU_TRA_LOI
+											FROM Answer
+											GROUP BY QuestionID) AS MAX_CAU_TRA_LOI);
+                                            
  -- Question 9: Thống kê số lượng account trong mỗi group 
- SELECT 	GA.GroupID, COUNT(GA.AccountID) AS SO_LUONG_ACCOUNT
+ SELECT 	* ,GA.GroupID, COUNT(GA.AccountID) AS SO_LUONG_ACCOUNT
  FROM 		`Group` G
  LEFT JOIN 	GroupAccount GA ON G.GroupID = GA.GroupID
  GROUP BY 	GA.GroupID
@@ -83,7 +92,7 @@ HAVING 		COUNT(EQ.ExamID) = (SELECT Max(So_Luong_Exam)
  HAVING		COUNT(A.AccountID) = 	(SELECT MIN(SO_LUONG_NHAN_VIEN)
 									FROM  	(SELECT 	COUNT(A.AccountID) AS SO_LUONG_NHAN_VIEN
 											FROM 		Position P 
-											JOIN		`Account` A ON P.PositionID = A.PositionID
+											LEFT JOIN		`Account` A ON P.PositionID = A.PositionID
 											GROUP BY	A.PositionID) AS MIN_NHAN_VIEN)
 ;
 
