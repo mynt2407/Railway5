@@ -29,7 +29,7 @@ WHERE 		D.DepartmentID = (SELECT D.DepartmentID
 DROP VIEW IF EXISTS ACCOUNT_THAM_GIA_NHIEU_NHAT;
 CREATE VIEW ACCOUNT_THAM_GIA_NHIEU_NHAT AS
 
-SELECT *
+SELECT A.Full_name, COUNT(GA.AccountID) AS so_luong_group
 FROM  	`Account` A
 JOIN	 GroupAccount GA ON A.AccountID = GA.AccountID
 GROUP BY GA.AccountID 
@@ -37,8 +37,9 @@ HAVING 	 COUNT(GA.AccountID) = (SELECT MAX(SO_LUONG_NHAN_VIEN)
 								FROM ( SELECT  COUNT(GA.AccountID) AS SO_LUONG_NHAN_VIEN
 										FROM 	`Account` A
 										JOIN	 GroupAccount GA ON A.AccountID = GA.AccountID
-										GROUP BY GA.AccountID) AS Employee)
+										GROUP BY GA.GroupID) AS Employee)
 ;
+                                        
 SELECT *
 FROM ACCOUNT_THAM_GIA_NHIEU_NHAT; 
 
@@ -90,11 +91,11 @@ FROM 	Department D
 JOIN 	`Account` A ON A.DepartmentID = D.DepartmentID
 GROUP BY A.DepartmentID
 HAVING 	COUNT(A.DepartmentID) =  (
-									SELECT  	COUNT(DepartmentID)
+									SELECT  	COUNT(AccountID)
 									FROM 		`Account` A
 									GROUP BY	DepartmentID
-                                    HAVING 		COUNT(DepartmentID)
-                                    ORDER BY 	COUNT(DepartmentID) DESC
+                                    HAVING 		COUNT(AccountID)
+                                    ORDER BY 	COUNT(AccountID) DESC
 									LIMIT 		1)                                                                
 ;
 SELECT *
@@ -126,5 +127,15 @@ WHERE 		A.Full_name LIKE 'Nguyễn%'
 SELECT *
 FROM CREATOR_NGUYEN;
 
+-- CTE
+WITH id_user AS (
+SELECT AccountID
+FROM `Account`
+WHERE Full_name LIKE 'Nguyễn%'
+)
+SELECT  	 *
+FROM		 id_user iu
+JOIN 		Question q ON q.CreatorID = iu.AccountID
+;
 /*====================================== CHỮA BÀI=================== =================== */
 -- Question 3: Tạo view có chứa câu hỏi có những content quá dài (content quá 20 từ được coi là quá dài) và xóa nó đi

@@ -17,7 +17,7 @@ CREATE TABLE Department(
 -- create table 2: Position
 CREATE TABLE Position (
 	PositionID 		TINYINT UNSIGNED PRIMARY KEY,
-	PositionName 	ENUM('Sale', 'Digital marketing', 'Test', 'Vice Director', 'Guard', 'Accountant') UNIQUE KEY NOT NULL
+	PositionName 	ENUM('Sale', 'PM', 'Test', 'Vice Director', 'Scrum Master', 'Accountant', 'HR', 'Dev') UNIQUE KEY NOT NULL
 );
 
 
@@ -27,8 +27,8 @@ CREATE TABLE Position (
 	Email 			VARCHAR(50) UNIQUE KEY NOT NULL,
 	User_name		VARCHAR(50) UNIQUE KEY NOT NULL CHECK (LENGTH(User_name) >= 6),
 	Full_name 		VARCHAR(50) NOT NULL CHECK (LENGTH(Full_name) >= 10),
-	DepartmentID	TINYINT UNSIGNED DEFAULT (2),
-	PositionID		TINYINT UNSIGNED DEFAULT('1'),
+	DepartmentID	TINYINT UNSIGNED DEFAULT(1),
+	PositionID		TINYINT UNSIGNED DEFAULT(1),
 	CreateDate		DATETIME DEFAULT NOW(),
     FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID),
 	FOREIGN KEY (PositionID) REFERENCES Position (PositionID)

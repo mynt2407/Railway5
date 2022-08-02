@@ -14,7 +14,7 @@ HAVING 		COUNT(ET.Employee_Number) >= 2
 ;
 
 -- Question 5: Query all employee of each department. 
-SELECT 		ET.Department_Number, D.Department_Name, COUNT(ET.Employee_Number) AS SO_LUONG_NHAN_VIEN
+SELECT 		* -- ET.Department_Number, D.Department_Name, COUNT(ET.Employee_Number) AS SO_LUONG_NHAN_VIEN
 FROM 		Department D
 LEFT JOIN 	Employee_Table ET ON D.Department_Number = ET.Department_Number
 GROUP BY 	ET.Department_Number

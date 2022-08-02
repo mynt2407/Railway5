@@ -14,21 +14,25 @@ VALUES
 INSERT INTO Position   (PositionID,       PositionName)
 VALUES
 						(1,				'Sale'				),
-                        (2,				'Digital marketing'	),
+                        (2,				'PM'				),
 						(3,				'Test'				),
 						(4,				'Vice Director'		),
-						(5,				'Guard'				),
-                        (6,				'Accountant'		);
+						(5,				'Scrum Master'		),
+                        (6,				'Accountant'		),
+                        (7,				'HR'				),
+						(8,				'Dev'				);
                         
 INSERT INTO  `Account` (AccountID, 		Email, 						User_name, 				Full_name, 			DepartmentID,	PositionID,	CreateDate)
 VALUES
 						(1,			'duynn03@gmail.com',			'duynn03',				N'Nguyễn Ngọc Duy',		6,				4,			NOW()),
 						(2,			'tranphudattp1997@gmail.com',	'dat.tranphu',			N'Trần Phú Dao',		3,				5,			NULL),
-						(3,			'alka.asura@gmail.com',			'du.lengoc',			N'Lê Ngọc Du',			2,				2,			NOW()),
+						(3,			'alka.asura@gmail.com',			'du.lengoc',			N'Dinh Thị Đào',		5,				1,			NOW()),
 						(4,			'ntd19795@gmail.com',			'duc.nguyenthe',		N'Nguyễn Thế Đức',		5,				6,			NOW()),
-						(5,			'Vuhoanghiepnb@gmail.com',		'hiep.vuhoang',			N'Vũ Hoàng Hiệp',		3,				3,			NULL),
-						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỵ',		2,				1,			NULL),
-						(7,			'nhung.tongthi@vti.com.vn',		'nhung.tongthi',		N'Tống Thị Nhung',		3,				2,			NOW());
+						(5,			'Vuhoanghiepnb@gmail.com',		'hiep.vuhoang',			N'Vũ Hoàng Hiệp',		3,				5,			NULL),
+						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỹ Nhung', 2,				1,			NULL),
+						(7,			'nhung.tongthi@vti.com.vn',		'nhung.tongthi',		N'Tống Thị Nhung',		1,				3,			NOW()),
+						(8,			'thang.maichien@vti.com.vn',	'thang.maichien',		N'Mai Chiến Thắng',		3,				2,			NOW()),
+                        (9,			'thao.dinhthu@gmail.com.vn',	'thao.dinhthu',			N'Đinh Thu Thảo',		1,				4,			NULL);
                         
 INSERT INTO `Group` (GroupID, 	GroupName, 				CreatorID, CreateDate)
 VALUES 
@@ -42,13 +46,13 @@ VALUES
                     
 INSERT INTO GroupAccount (GroupID,	AccountID, JoinDate)
 VALUES 
-						(1, 		5,			'2012-02-26'),
+						(5, 		5,			'2012-02-26'),
 						(2, 		4,			'2017-11-12'),
-						(3, 		7,			'2019-01-03'),
-						(4, 		1,			'2005-10-11'),
-                        (5, 		1,			'2018-01-01'),
+						(1, 		7,			'2019-01-03'),
+						(1, 		1,			'2005-10-11'),
+                        (5, 		1,			'2021-01-01'),
                         (6, 		3,			'2019-12-21'),
-                        (7, 		5,			'2020-02-11');
+                        (3, 		5,			'2022-02-11');
                         
 INSERT INTO TypeQuestion (TypeID, 	TypeName)
 VALUES
@@ -60,20 +64,25 @@ VALUES
 								('Java'			),
 								('ASP.NET'		),
 								('ADO.NET'		),
-								('SQL'			);
+								('SQL'			),
+                                ('RUBY'			),
+                                ('Python'		),
+								('C++'			);
                                 
-INSERT INTO Question (Content,									TypeID,						CategoryID, 	CreatorID, 		CreateDate)
+INSERT INTO Question (Content,											TypeID,						CategoryID, 	CreatorID, 		CreateDate)
 VALUES
 
-					(N'Java là gì',								2,							1,				'2',			'2020-02-11'),
-					(N'SQL là gì',								1,							2,				'1',			'2020-02-11'),
-                    (N'TINYINT là gì',							1,							3,				'1',			'2020-01-30'),
-                    (N'SMALLINT là gì',							2,							4,				'7',			'2020-08-17'),
-                    (N'CHAR và VARCHAR giống nhau như thế nÀO',	1,							3,				'3',			'2020-08-20');
+					(N'Java là gì',										2,							1,					2,			'2021-02-11'),
+					(N'SQL là gì',										1,							2,					1,			'2017-02-11'),
+                    (N'TINYINT là gì',									1,							3,					1,			'2020-01-30'),
+                    (N'Câu hỏi SMALLINT là gì',							2,							4,					7,			'2021-08-17'),
+                    (N'Câu hỏi CHAR và VARCHAR giống nhau như thế nào',	1,							3,					3,			'2020-08-20'),
+					(N'Python là gì',									2,							1,					3,			'2022-01-02'),
+                    (N'AI là gì',										1,							6,					4,			'2022-05-23');
                     
 INSERT INTO `Answer` (QuestionID,	Content, 							isCorrect)
 VALUES
-					(3, 			N'là ngôn ngữ lập trình',			'đúng'),
+					(2, 			N'là ngôn ngữ lập trình',			'đúng'),
                     (5,				N'ràng buộc dữ liệu chiếm 1B',		'đúng'),
                     (2, 			N'Định dạng chuỗi kí tự',			'sai'),
                     (3, 			N'ngôn ngữ truy vấn có cấu trúc',	'đúng'),
@@ -81,15 +90,20 @@ VALUES
                     
 INSERT INTO Exam (`Code`, 	Title, 		Duration, 	CreatorID, CreateDate)
 VALUES 
-				('E_11',	'Java',		'60', 		1,			'2020-07-01'),
-                ('E_13', 	'SQL',		'120', 		3,			'2011-08-03'),
-                ('E_15', 	'Web',		'120', 		3,			'2019-08-03'),
-                ('E_10', 	'AI',		'90', 		2,			'2020-11-11'),
-                ('E_12', 	'Database',	'60', 		7,			'2020-11-11');
+				('E_11',	N'Đề thi Java',		'60', 		1,			'2020-07-01'),
+                ('E_13', 	N'Đề thi SQL',		'120', 		3,			'2011-08-03'),
+                ('E_15', 	N'Đề thi Web',		'120', 		3,			'2019-08-03'),
+                ('E_10', 	N'Đề thi AI',		'90', 		2,			'2020-11-11'),
+                ('E_12', 	N'Đề thi Database',	'60', 		7,			'2022-11-20'),
+				('E_19', 	N'Đề thi C++',		'60', 		4,			'2017-11-04'),
+                ('E_20', 	N'Đề thi Ruby',		'90', 		7,			'2022-01-15');
 INSERT INTO ExamQuestion	(ExamID, QuestionID)
 VALUES
 							(1, 	3),
                             (4, 	5),
                             (2, 	2),
                             (3, 	3),
-                            (1, 	2);
+                            (1, 	2),
+							(1, 	4),
+                            (4, 	2),
+                            (1, 	1);
