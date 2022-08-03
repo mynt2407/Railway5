@@ -14,21 +14,22 @@ VALUES
 INSERT INTO Position   (PositionID,       PositionName)
 VALUES
 						(1,				'Sale'				),
-                        (2,				'Digital marketing'	),
+                        (2,				'PM'				),
 						(3,				'Test'				),
 						(4,				'Vice Director'		),
-						(5,				'Guard'				),
-                        (6,				'Accountant'		    );
+						(5,				'Scrum Master'		),
+                        (6,				'Accountant'		 ),
+						(7,				'Dev'				 );
                         
 INSERT INTO  `Account` (AccountID, 		Email, 						User_name, 				Full_name, 			DepartmentID,	PositionID,	CreateDate)
 VALUES
 						(1,			'duynn03@gmail.com',			'duynn03',				N'Nguyễn Ngọc Duy',		1,				4,			NOW()),
-						(2,			'tranphudattp1997@gmail.com',	'dat.tranphu',			N'Trần Phú Đạt',		3,				5,			NULL),
-						(3,			'alka.asura@gmail.com',			'du.lengoc',			N'Lê Ngọc Du',			2,				2,			NOW()),
+						(2,			'tranphudattp1997@gmail.com',	'dat.tranphu',			N'Trần Phú Đạt',		2,				5,			NULL),
+						(3,			'alka.asura@gmail.com',			'du.lengoc',			N'Lê Ngọc Du',		    3,				7,			NOW()),
 						(4,			'ntd19795@gmail.com',			'duc.nguyenthe',		N'Nguyễn Thế Đức',		5,				6,			NOW()),
-						(5,			'Vuhoanghiepnb@gmail.com',		'hiep.vuhoang',			N'Vũ Hoàng Hiệp',		4,				3,			NULL),
-						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỵ',		2,				1,			NULL),
-						(7,			'nhung.tongthi@vti.com.vn',		'nhung.tongthi',		N'Tống Thị Nhung',		1,				NULL,			NOW());
+						(5,			'Vuhoanghiepnb@gmail.com',		'hiep.vuhoang',			N'Vũ Hoàng Hiệp',		4,				5,			NULL),
+						(6,			'mynt2407@gmail.com',			'my.nguyenthi',			N'Nguyễn Thị Mỵ',		3,				5,			NULL),
+						(7,			'nhung.tongthi@vti.com.vn',		'nhung.tongthi',		N'Tống Thị Nhung',		1,				7,			NOW());
                         
 INSERT INTO `Group` (GroupID, 	GroupName, 				CreatorID, CreateDate)
 VALUES 
