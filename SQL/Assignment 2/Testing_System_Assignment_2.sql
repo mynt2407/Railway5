@@ -73,6 +73,7 @@ CREATE TABLE Question (
 	TypeID			SMALLINT UNSIGNED NOT NULL,
 	CreatorID		SMALLINT UNSIGNED NOT NULL,
 	CreateDate		DATETIME DEFAULT NOW(),
+
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (TypeID) REFERENCES TypeQuestion (TypeID),
     FOREIGN KEY (CreatorID) REFERENCES `Account` (AccountID)
