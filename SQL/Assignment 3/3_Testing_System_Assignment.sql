@@ -82,9 +82,9 @@ CREATE TABLE Question (
 CREATE TABLE Answer (
 	AnswerID 	TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	Content		VARCHAR(100) NOT NULL,
-    QuestionID	TINYINT UNSIGNED NOT NULL DEFAULT(3),
+    QuestionID	TINYINT UNSIGNED DEFAULT(3),
     isCorrect	ENUM ('đúng', 'sai') NOT NULL,
-    FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID)
+    FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID) ON DELETE SET NULL
 );
 
 
@@ -104,9 +104,9 @@ CREATE TABLE Exam (
 
 -- create table 11: ExamQuestion
 CREATE TABLE ExamQuestion (
-	ExamID	 	TINYINT UNSIGNED NOT NULL,
+	ExamID	 	TINYINT UNSIGNED,
 	QuestionID	TINYINT UNSIGNED ,
-    FOREIGN KEY (ExamID) REFERENCES Exam (ExamID),
+    FOREIGN KEY (ExamID) REFERENCES Exam (ExamID) ON DELETE CASCADE,
 	FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID),
     PRIMARY KEY (ExamID,QuestionID)
     

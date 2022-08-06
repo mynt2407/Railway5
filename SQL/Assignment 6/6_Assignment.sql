@@ -85,7 +85,12 @@ DELIMITER ;
 SELECT Loai_cau_dai_nhat();
 
 -- Question 5: Sử dụng store ở question 4 để tìm ra tên của type question
+-- Gọi theo kiểu Function
+SELECT TypeName
+FROM TypeQuestion
+WHERE TypeID = Loai_cau_dai_nhat();
 
+-- Gọi theo kiểu store
 SELECT *
 FROM TypeQuestion
 WHERE TypeID = @TypeID;
@@ -95,20 +100,19 @@ WHERE TypeID = @TypeID;
  -- chuỗi của người dùng nhập vào
  
 DROP PROCEDURE IF EXISTS tra_ve_chuoi;
-USE  testingsystem;
 DELIMITER $$
-CREATE PROCEDURE tra_ve_chuoi (IN input_ten_nhom VARCHAR(50), IN in_put_ten_user VARCHAR(50)) -- Chỉ cần nhập 1 biến 
+CREATE PROCEDURE tra_ve_chuoi (IN input_text VARCHAR(50)) -- Chỉ cần nhập 1 biến 
 BEGIN 
 SELECT  GroupName, null AS User_name
 FROM 	`Group` G
-WHERE 	GroupName LIKE CONCAT('%', input_ten_nhom, '%')
+WHERE 	GroupName LIKE CONCAT('%', input_text, '%')
 UNION 
 SELECT 	 null AS GroupName, User_name 
 FROM 	`Account`
-WHERE 	User_name LIKE CONCAT('%', in_put_ten_user, '%');
+WHERE 	User_name LIKE CONCAT('%', input_text, '%');
 END$$
 DELIMITER ;
-CALL tra_ve_chuoi ('%cao%','duy');
+CALL tra_ve_chuoi ('duy');
 
 -- Ví dụ: Nhập vào user name, trả ra id của người dùng 
 DROP PROCEDURE IF EXISTS out_put_account_id;
@@ -183,12 +187,77 @@ DELIMITER ;
 
 CALL type_question_max('Essay');
 -- Question 9: Viết 1 store cho phép người dùng xóa exam dựa vào ID
+DROP PROCEDURE IF EXISTS sp_delete_exam;
+DELIMITER $$ 
+CREATE PROCEDURE sp_delete_exam (IN exam_id INT)
+BEGIN 
 
+DELETE
+FROM Exam 
+WHERE ExamID = exam_id;
 
+END$$
+DELIMITER ; 
 
 -- Question 10: Tìm ra các exam được tạo từ 3 năm trước và xóa các exam đó đi (sử
  -- dụng store ở câu 9 để xóa)
  -- Sau đó in số lượng record đã remove từ các table liên quan trong khi removing
+ 
+ DROP PROCEDURE IF EXISTS sp_delete_exam_2;
+DELIMITER $$ 
+CREATE PROCEDURE sp_delete_exam_2()
+BEGIN 
+WITH id_delete AS (
+	SELECT ExamID
+	FROM Exam
+	WHERE YEAR(CreateDate) = YEAR(NOW()) - 3
+)
+	SELECT eq.ExamID AS id_bi_xoa, COUNT(eq.ExamID) AS so_luong_record
+	FROM ExamQuestion eq
+	JOIN id_delete id ON eq.ExamID = id.ExamID
+	GROUP BY eq.ExamID;
+
+    DELETE
+	FROM Exam 
+	WHERE ExamID IN (SELECT *
+					FROM id_delete);
+
+END$$
+DELIMITER ; 
+    
+-- Question 11: Viết store cho phép người dùng xóa phòng ban bằng cách người dùng 
+--  nhập vào tên phòng ban và các account thuộc phòng ban đó sẽ được 
+--  chuyển về phòng ban default là phòng ban chờ việc    
+
+-- input: ten phong 
+DROP PROCEDURE IF EXISTS delete_department;
+DELIMITER $$ 
+CREATE PROCEDURE delete_department (IN department_name VARCHAR(50))
+BEGIN 
+
+DECLARE department_id1 INT;
+DECLARE department_id2 INT;
+
+SELECT DepartmentID INTO department_id1
+FROM Department 
+WHERE DepartmentName = department_name;
+
+SELECT DepartmentID INTO department_id2
+FROM Department
+WHERE DepartmentName = 'Waiting room';
+
+UPDATE `Account`
+SET DepartmentID = department_id2
+WHERE DepartmentID = department_id1;
+
+DELETE 
+FROM `Account`
+WHERE DepartmentID = department_id1;
+
+END$$
+DELIMITER ; 
+ 	
+ 
  
 --  Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
 -- (Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng")

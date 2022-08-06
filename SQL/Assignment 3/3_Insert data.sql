@@ -9,7 +9,8 @@ VALUES
 						(3,				N'Sercurity'		),
 						(4,				N'Technical'		),
 						(5,				N'Accounting '		),
-						(6,				N'Director'			);
+						(6,				N'Director'			),
+                        (7,				N'Waiting room'		);
                   
 INSERT INTO Position   (PositionID,       PositionName)
 VALUES
@@ -69,8 +70,8 @@ VALUES
 					(N'Java là gì',								2,							1,				'2',			'2020-02-11'),
 					(N'SQL là gì',								1,							2,				'1',			'2020-02-11'),
                     (N'TINYINT là gì',							1,							3,				'1',			'2020-01-30'),
-                    (N'SMALLINT là gì',							2,							4,				'7',			'2020-08-17'),
-                    (N'CHAR và VARCHAR giống nhau như thế nÀO',	1,							3,				'3',			'2020-08-20');
+                    (N'SMALLINT là gì',							2,							4,				'7',			'2022-08-17'),
+                    (N'CHAR và VARCHAR giống nhau như thế nào',	1,							3,				'3',			'2020-08-20');
                     
 INSERT INTO `Answer` (QuestionID,	Content, 							isCorrect)
 VALUES
@@ -82,11 +83,11 @@ VALUES
                     
 INSERT INTO Exam (`Code`, 	Title, 		Duration, 	CreatorID, CreateDate)
 VALUES 
-				('E_11',	'Java',		'60', 		1,			'2020-07-01'),
-                ('E_13', 	'SQL',		'120', 		3,			'2020-08-03'),
+				('E_11',	'Java',		'60', 		1,			'2019-07-01'),
+                ('E_13', 	'SQL',		'120', 		3,			'2019-08-03'),
                 ('E_15', 	'Web',		'120', 		3,			'2020-08-03'),
                 ('E_10', 	'AI',		'90', 		2,			'2020-11-03'),
-                ('E_12', 	'Database',	'60', 		7,			'2020-11-11');
+                ('E_12', 	'Database',	'60', 		7,			'2019-11-11');
 INSERT INTO ExamQuestion	(ExamID, QuestionID)
 VALUES
 							(1, 	3),
