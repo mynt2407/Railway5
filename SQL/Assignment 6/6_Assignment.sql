@@ -292,8 +292,7 @@ WHERE DepartmentID = department_id1;
 
 END$$
 DELIMITER ; 
- 	
- 
+
 --  Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
 -- (Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng")
 DROP PROCEDURE IF EXISTS question_in_year;
@@ -325,5 +324,33 @@ GROUP BY month_in_year.MONTH;
 END$$
 DELIMITER ; 
 
+-- Question 13: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong 6
+-- tháng gần đây nhất (nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào
+-- trong tháng")
+/* -- Hàm DATE_SUB trả về một ngày mà sau đó một khoảng thời gian/ngày nhất định đã bị trừ */
+DROP PROCEDURE IF EXISTS sp_CountQuesPrevious6Month;
+DELIMITER $$
+CREATE PROCEDURE sp_CountQuesPrevious6Month()
+BEGIN
+		SELECT Previous6Month.MONTH, COUNT(QuestionID) AS COUNT
+		FROM
+		(
+			SELECT MONTH(CURRENT_DATE - INTERVAL 5 MONTH) AS MONTH
+			UNION
+			SELECT MONTH(CURRENT_DATE - INTERVAL 4 MONTH) AS MONTH
+			UNION
+			SELECT MONTH(CURRENT_DATE - INTERVAL 3 MONTH) AS MONTH
+			UNION
+			SELECT MONTH(CURRENT_DATE - INTERVAL 2 MONTH) AS MONTH
+			UNION
+			SELECT MONTH(CURRENT_DATE - INTERVAL 1 MONTH) AS MONTH
+			UNION
+			SELECT MONTH(CURRENT_DATE - INTERVAL 0 MONTH) AS MONTH
+        ) AS Previous6Month
+		LEFT JOIN Question ON Previous6Month.MONTH = MONTH(CreateDate)
+		GROUP BY Previous6Month.MONTH
+		ORDER BY Previous6Month.MONTH ASC;
+END$$
+DELIMITER ;
 
 

@@ -1,3 +1,4 @@
+
 -- Exercise 1: Subquery
 -- Question 1: Viết 1 query lấy thông tin "Name" từ bảng Production.Product có name của ProductSubcategory là 'Saddles'
 
