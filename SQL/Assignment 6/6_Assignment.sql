@@ -224,11 +224,47 @@ WITH id_delete AS (
 
 END$$
 DELIMITER ; 
+
+-- Question 10: Tìm ra các exam được tạo từ 3 năm trước và xóa các exam đó đi (sử 
+--  dụng store ở câu 9 để xóa)
+--  Sau đó in số lượng record đã remove từ các table liên quan trong khi 
+--  removing
+DROP PROCEDURE IF EXISTS delect_exam;
+DELIMITER $$ 
+CREATE PROCEDURE delect_exam ()
+BEGIN 
+
+DROP TABLE IF EXISTS id_delete;
+CREATE TEMPORARY TABLE id_delete(t_exam_id INT NOT NULL) ENGINE=MEMORY;
+
+INSERT INTO id_delete(t_exam_id)
+					SELECT 	ExamID
+					FROM 	exam
+					WHERE CreateDate < DATE_SUB(NOW(), INTERVAL 3 YEAR);
+
+	SELECT eq.ExamID, COUNT(eq.ExamID) AS so_luong
+	FROM ExamQuestion eq 
+	JOIN id_delete i ON eq.ExamID = i.t_exam_id
+	GROUP BY eq.ExamID;
+
+-- WITH id_delete_2 AS (
+-- SELECT 	ExamID
+-- FROM 	exam
+-- WHERE CreateDate < DATE_SUB(NOW(), INTERVAL 3 YEAR))
+
+-- 	select *
+-- 	from id_delete;
+	DELETE
+	FROM Exam 
+	WHERE ExamID IN (SELECT *
+					FROM id_delete);
+
+END$$
+DELIMITER ; 
     
 -- Question 11: Viết store cho phép người dùng xóa phòng ban bằng cách người dùng 
 --  nhập vào tên phòng ban và các account thuộc phòng ban đó sẽ được 
 --  chuyển về phòng ban default là phòng ban chờ việc    
-
 -- input: ten phong 
 DROP PROCEDURE IF EXISTS delete_department;
 DELIMITER $$ 
@@ -258,10 +294,36 @@ END$$
 DELIMITER ; 
  	
  
- 
 --  Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
 -- (Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng")
+DROP PROCEDURE IF EXISTS question_in_year;
+DELIMITER $$ 
+CREATE PROCEDURE question_in_year()
+BEGIN 
 
+WITH question1 AS(
+	SELECT *
+    FROM question
+    WHERE YEAR(NOW()) = YEAR(CreateDate)
+)
+SELECT month_in_year.MONTH, COUNT(q.QuestionID)
+	FROM (
+	SELECT 1 AS MONTH
+	UNION SELECT 2 AS MONTH
+	UNION SELECT 3 AS MONTH
+	UNION SELECT 4 AS MONTH
+	UNION SELECT 5 AS MONTH
+	UNION SELECT 6 AS MONTH
+	UNION SELECT 7 AS MONTH
+	UNION SELECT 8 AS MONTH
+	UNION SELECT 9 AS MONTH
+	UNION SELECT 10 AS MONTH
+	UNION SELECT 11 AS MONTH
+	UNION SELECT 12 AS MONTH) AS month_in_year
+LEFT JOIN question1 q ON  month_in_year.MONTH = MONTH(q.CreateDate)
+GROUP BY month_in_year.MONTH;
+END$$
+DELIMITER ; 
 
 
 
